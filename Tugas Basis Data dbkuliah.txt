@@ -1,0 +1,222 @@
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| dbkuliah           |
+| dbti02             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> USE dbkuliah;
+Database changed
+MariaDB [dbkuliah]> SHOW TABLES;
+Empty set (0.001 sec)
+
+MariaDB [dbkuliah]> CREATE TABLE jurusan(
+    -> id int primary key auto_increment not null,
+    -> nama varchar(30) not null);
+Query OK, 0 rows affected (0.414 sec)
+
+MariaDB [dbkuliah]> DESC jurusan;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nama  | varchar(30) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.322 sec)
+
+MariaDB [dbkuliah]> CREATE TABLE mahasiswa(
+    -> id int primary key auto_increment not null,
+    -> nim int not null,
+    -> nama vrachar(30) not null,
+    -> )
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(30) not null,
+)' at line 4
+MariaDB [dbkuliah]> CREATE TABLE mahasiswa(
+    ->  id int primary key auto_increment not null,
+    -> nim int not null,
+    -> nama varchar(30) not null,
+    -> alamat varchar(30) not null,
+    -> idjurusan int not null references jurusan(id),
+    -> foto varchar(30) not null);
+Query OK, 0 rows affected (0.447 sec)
+
+MariaDB [dbkuliah]> DESC mahasiswa;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nim       | int(11)     | NO   |     | NULL    |                |
+| nama      | varchar(30) | NO   |     | NULL    |                |
+| alamat    | varchar(30) | NO   |     | NULL    |                |
+| idjurusan | int(11)     | NO   |     | NULL    |                |
+| foto      | varchar(30) | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.022 sec)
+
+MariaDB [dbkuliah]> SHOW TABLES;
++--------------------+
+| Tables_in_dbkuliah |
++--------------------+
+| jurusan            |
+| mahasiswa          |
++--------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [dbkuliah]> DESC jurusan;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nama  | varchar(30) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.027 sec)
+
+MariaDB [dbkuliah]> INSERT INTO jurusan (nama) VALUES
+    -> ('Teknik Informatika'),('Sistem Informasi'),('Bisnis Digital'),('Teknik Elektro'),('Teknik Mesin');
+Query OK, 5 rows affected (0.546 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [dbkuliah]> SHOW TABLES;
++--------------------+
+| Tables_in_dbkuliah |
++--------------------+
+| jurusan            |
+| mahasiswa          |
++--------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [dbkuliah]> SELECT * FROM jurusan;
++----+--------------------+
+| id | nama               |
++----+--------------------+
+|  1 | Teknik Informatika |
+|  2 | Sistem Informasi   |
+|  3 | Bisnis Digital     |
+|  4 | Teknik Elektro     |
+|  5 | Teknik Mesin       |
++----+--------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [dbkuliah]> DESC mahasiswa;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nim       | int(11)     | NO   |     | NULL    |                |
+| nama      | varchar(30) | NO   |     | NULL    |                |
+| alamat    | varchar(30) | NO   |     | NULL    |                |
+| idjurusan | int(11)     | NO   |     | NULL    |                |
+| foto      | varchar(30) | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.020 sec)
+
+MariaDB [dbkuliah]> INSERT INTO mahasiswa (nim,nama,alamat,idjurusan,foto) VALUES
+    -> (0110223090,'Garnacho','Argentina',1,'garnacho.jpg');
+Query OK, 1 row affected (0.280 sec)
+
+MariaDB [dbkuliah]> SELECT * FROM mahasiswa;
++----+-----------+----------+-----------+-----------+--------------+
+| id | nim       | nama     | alamat    | idjurusan | foto         |
++----+-----------+----------+-----------+-----------+--------------+
+|  1 | 110223090 | Garnacho | Argentina |         1 | garnacho.jpg |
++----+-----------+----------+-----------+-----------+--------------+
+1 row in set (0.000 sec)
+
+
+Setting environment for using XAMPP for Windows.
+lenovo@DESKTOP-BJQCJ5H c:\users\lenovo\downloads\d
+# cd mysql/bin
+
+lenovo@DESKTOP-BJQCJ5H c:\Users\lenovo\Downloads\D\mysql\bin
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| dbkuliah           |
+| dbpuskesmas        |
+| dbti02             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+8 rows in set (0.425 sec)
+
+MariaDB [(none)]> USE dbkuliah;
+Database changed
+MariaDB [dbkuliah]> SELECT * FROM jurusan;
++----+--------------------+
+| id | nama               |
++----+--------------------+
+|  1 | Teknik Informatika |
+|  2 | Sistem Informasi   |
+|  3 | Bisnis Digital     |
+|  4 | Teknik Elektro     |
+|  5 | Teknik Mesin       |
++----+--------------------+
+5 rows in set (0.503 sec)
+
+MariaDB [dbkuliah]> SELECT * FROM mahasiswa;
++----+------------+----------+-----------+-----------+--------------+
+| id | nim        | nama     | alamat    | idjurusan | foto         |
++----+------------+----------+-----------+-----------+--------------+
+|  1 |  110223090 | Garnacho | Argentina |         1 | garnacho.jpg |
+|  2 |  110223080 | Aamon    | England   |         2 | aamon.jpg    |
+|  3 | 1102230100 | Lyxia    | France    |         3 | lyxia.jpg    |
+|  4 | 1102230101 | Cici     | Germany   |         4 | cici.jpg     |
++----+------------+----------+-----------+-----------+--------------+
+4 rows in set (0.218 sec)
+
+MariaDB [dbkuliah]> INSERT INTO mahasiswa (nim,nama,alamat,idjurusan,foto) VALUES
+    -> (0110223102,'Putrinf','Bogor',5,'putri.jpg');
+Query OK, 1 row affected (0.185 sec)
+
+MariaDB [dbkuliah]> SELECT * FROM mahasiswa;
++----+------------+----------+-----------+-----------+--------------+
+| id | nim        | nama     | alamat    | idjurusan | foto         |
++----+------------+----------+-----------+-----------+--------------+
+|  1 |  110223090 | Garnacho | Argentina |         1 | garnacho.jpg |
+|  2 |  110223080 | Aamon    | England   |         2 | aamon.jpg    |
+|  3 | 1102230100 | Lyxia    | France    |         3 | lyxia.jpg    |
+|  4 | 1102230101 | Cici     | Germany   |         4 | cici.jpg     |
+|  5 |  110223102 | Putrinf  | Bogor     |         5 | putri.jpg    |
++----+------------+----------+-----------+-----------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [dbkuliah]> INSERT INTO mahasiswa (nim,nama,alamat,idjurusan,foto) VALUES
+    -> (0110223103,'Syhra','Bogor',5,'syahra.jpg');
+Query OK, 1 row affected (0.626 sec)
+
+MariaDB [dbkuliah]> SELECT * FROM mahasiswa;
++----+------------+----------+-----------+-----------+--------------+
+| id | nim        | nama     | alamat    | idjurusan | foto         |
++----+------------+----------+-----------+-----------+--------------+
+|  1 |  110223090 | Garnacho | Argentina |         1 | garnacho.jpg |
+|  2 |  110223080 | Aamon    | England   |         2 | aamon.jpg    |
+|  3 | 1102230100 | Lyxia    | France    |         3 | lyxia.jpg    |
+|  4 | 1102230101 | Cici     | Germany   |         4 | cici.jpg     |
+|  5 |  110223102 | Putrinf  | Bogor     |         5 | putri.jpg    |
+|  6 |  110223103 | Syhra    | Bogor     |         5 | syahra.jpg   |
++----+------------+----------+-----------+-----------+--------------+
+6 rows in set (0.000 sec)
+
+MariaDB [dbkuliah]>
